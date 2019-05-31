@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "webpack-dev-server --mode development",
     "prod": "webpack --mode production",
-    "err": "webpack --display-error-details"
+    "err": "webpack --display-error-details",
+    "lint": "tslint \"src/**/*.ts\" --project tsconfig.json"
   },
   "repository": {
     "type": "git",
@@ -19,15 +20,17 @@
   },
   "homepage": "https://github.com/nerijusdu/notmagic-mirror#readme",
   "dependencies": {
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "vue-class-component": "^7.1.0",
+    "vue-property-decorator": "^8.1.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.5",
-    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-    "@babel/preset-env": "^7.4.5",
-    "babel-loader": "^8.0.6",
     "css-loader": "^2.1.1",
     "html-webpack-plugin": "^3.2.0",
+    "ts-loader": "^6.0.2",
+    "tslint": "^5.17.0",
+    "tslint-config-airbnb": "^5.11.1",
+    "typescript": "^3.5.1",
     "vue-loader": "^15.7.0",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.10",
