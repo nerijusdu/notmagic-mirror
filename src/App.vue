@@ -1,14 +1,18 @@
 <template>
   <div>
-    <h1>Hello from the AppComponent</h1>
-    <p>{{ someData }}</p>
+    <Clock />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import Clock from './clock';
 
-@Component
+@Component({
+  components: {
+    Clock
+  }
+})
 export default class App extends Vue {
   public someData = 'Some text';
 }

@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/nerijusdu/notmagic-mirror#readme",
   "dependencies": {
+    "moment": "^2.24.0",
     "vue": "^2.6.10",
     "vue-class-component": "^7.1.0",
     "vue-property-decorator": "^8.1.1"

@@ -19,7 +19,11 @@
         "arrow-parens": false,
         // Pending fix for shorthand property names.
         "object-literal-sort-keys": false,
-        "import-name": false
+        "import-name": false,
+        "trailing-comma": false,
+        "no-console": {
+            "severity": "warning"
+        }
     },
     "rulesDirectory": []
 }
