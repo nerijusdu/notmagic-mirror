@@ -1,5 +1,9 @@
 <template>
-  <div>{{ displayTime }}</div>
+  <div class="container">
+    <div class="time">{{ displayTime }}</div>
+    <div class="day-of-week">{{ displayDOW }}</div>
+    <div class="date">{{ displayDate }}</div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -9,15 +13,42 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component
 export default class Clock extends Vue {
   public displayTime: string = '-';
+  public displayDate: string = '-';
+  public displayDOW: string = '-';
 
   public mounted() {
+    this.updateTime();
+
     setInterval(() => {
       this.updateTime();
-    }, 1000);
+    }, 60000);
   }
 
   public updateTime() {
-    this.displayTime = moment().format('HH:mm:ss');
+    const now = moment();
+    this.displayTime = now.format('HH:mm');
+    this.displayDate = now.format('MMMM Mo, YYYY');
+    this.displayDOW = now.format('dddd');
   }
 }
 </script>
+
+<style scoped>
+.container {
+  text-align: center;
+  width: 30vw;
+  min-width: 300px;
+}
+
+.time {
+  font-size: 10vh;
+}
+
+.date {
+  margin-top: 10px;
+}
+
+.day-of-week {
+  font-size: xx-large;
+}
+</style>

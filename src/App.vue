@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="app-container">
     <Clock />
   </div>
 </template>
@@ -17,3 +17,21 @@ export default class App extends Vue {
   public someData = 'Some text';
 }
 </script>
+
+<style>
+.app-container {
+  background: black;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  width: 100%;
+  height: 100%;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+</style>
+
