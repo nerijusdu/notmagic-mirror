@@ -1,16 +1,19 @@
 <template>
   <div class="app-container">
     <Clock />
+    <SettingsIcon />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import Clock from './clock';
+import Clock from '@components/clock';
+import { SettingsIcon } from '@components/settings';
 
 @Component({
   components: {
-    Clock
+    Clock,
+    SettingsIcon
   }
 })
 export default class App extends Vue {

@@ -1,8 +1,11 @@
 import Vue from 'vue';
 import App from './App.vue';
+import store from '@store';
+import './util/registerComponents';
 
-const app = new Vue({
+new Vue({
   el: '#app',
   components: { App },
   template: '<App />',
+  store
 });

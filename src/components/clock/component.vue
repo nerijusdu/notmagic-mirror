@@ -9,9 +9,13 @@
 <script lang="ts">
 import moment from 'moment';
 import { Component, Vue } from 'vue-property-decorator';
+import { State } from 'vuex-class';
+import { ClockSettings } from '@components/settings/types';
 
 @Component
 export default class Clock extends Vue {
+  @State(state => state.settings.clock) settings!: ClockSettings;
+  
   public displayTime: string = '-';
   public displayDate: string = '-';
   public displayDOW: string = '-';
@@ -26,8 +30,8 @@ export default class Clock extends Vue {
 
   public updateTime() {
     const now = moment();
-    this.displayTime = now.format('HH:mm');
-    this.displayDate = now.format('MMMM Mo, YYYY');
+    this.displayTime = now.format(this.settings.timeFormat);
+    this.displayDate = now.format(this.settings.dateFormat);
     this.displayDOW = now.format('dddd');
   }
 }
