@@ -44,6 +44,7 @@ module.exports = {
       'vue$': 'vue/dist/vue.esm.js',
       '@components': path.resolve(__dirname, './src/components'),
       '@store': path.resolve(__dirname, './src/store'),
+      '@services': path.resolve(__dirname, './src/services'),
       '@': path.resolve(__dirname, './src')
     },
     extensions: ['*', '.ts', '.js', '.vue', '.json']

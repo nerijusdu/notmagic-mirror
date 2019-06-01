@@ -39,7 +39,9 @@ export default class Clock extends Vue {
 
 <style scoped>
 .container {
+  text-shadow: 2px 2px #000000;
   text-align: center;
+  font-weight: bolder;
   width: 30vw;
   min-width: 300px;
 }
@@ -50,6 +52,7 @@ export default class Clock extends Vue {
 
 .date {
   margin-top: 10px;
+  font-size: large;
 }
 
 .day-of-week {

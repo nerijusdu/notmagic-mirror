@@ -1,0 +1,40 @@
+interface Configuration {
+  secrets?: Secrets;
+}
+
+interface Secrets {
+  reddit: string;
+}
+
+const decode = (json: any, secretsJson?: any): Configuration => {
+  let secretsObj: Secrets | undefined = undefined;
+  if (secretsJson) {
+    secretsObj = {
+      reddit: secretsJson.redditSecret
+    }
+  }
+
+  return {
+    secrets: secretsObj
+  };
+}
+
+let config: Configuration;
+
+export const getConfig = () : Configuration => {
+  if (config) {
+    return config;
+  }
+
+  const json = require('../config.json');
+  let secretsJson: any | null = null;
+  try {
+    secretsJson = require('../config.secret.json');
+  }
+  catch (e) {
+    console.warn('config.secret.json not found');
+  }
+
+  config = decode(json, secretsJson);
+  return config;
+};

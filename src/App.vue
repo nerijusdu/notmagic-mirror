@@ -1,5 +1,5 @@
 <template>
-  <div class="app-container">
+  <div class="app-container" :style="{ 'background-image': 'url(' + background.url + ')' }">
     <Clock />
     <SettingsIcon />
   </div>
@@ -9,6 +9,10 @@
 import { Component, Vue } from 'vue-property-decorator';
 import Clock from '@components/clock';
 import { SettingsIcon } from '@components/settings';
+import { State } from 'vuex-class'; 
+import { Image } from './store/types';
+
+const changeInterval = 60000; // TODO: move to settings
 
 @Component({
   components: {
@@ -17,13 +21,34 @@ import { SettingsIcon } from '@components/settings';
   }
 })
 export default class App extends Vue {
-  public someData = 'Some text';
+  @State(state => state.backgrounds) backgrounds!: Image[];
+  private index: number = 0;
+
+  get background() {
+    if (this.backgrounds.length === 0) {
+      return '';
+    }
+
+    return this.backgrounds[this.index];
+  }
+
+  mounted() {
+    setInterval(() => {
+      this.index += 1;
+      if (this.index >= this.backgrounds.length) {
+        this.index = 0;
+      }
+    }, changeInterval)
+  }
 }
 </script>
 
 <style>
 .app-container {
   background: black;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   color: white;
   font-family: 'Roboto', sans-serif;
   width: 100%;
