@@ -4,13 +4,15 @@ interface Configuration {
 
 interface Secrets {
   reddit: string;
+  weatherApi: string;
 }
 
 const decode = (json: any, secretsJson?: any): Configuration => {
   let secretsObj: Secrets | undefined;
   if (secretsJson) {
     secretsObj = {
-      reddit: secretsJson.redditSecret
+      reddit: secretsJson.redditSecret,
+      weatherApi: secretsJson.weatherApiSecret
     };
   }
 

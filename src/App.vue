@@ -1,21 +1,24 @@
 <template>
   <div class="app-container" :style="{ 'background-image': 'url(' + background.url + ')' }">
     <Clock />
+    <Weather />
     <SettingsIcon />
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
 import Clock from '@components/clock';
 import { SettingsIcon } from '@components/settings';
-import { State } from 'vuex-class'; 
+import Weather from '@components/weather';
+import { Component, Vue } from 'vue-property-decorator';
+import { State } from 'vuex-class';
 import { Image } from './store/types';
 
 @Component({
   components: {
     Clock,
-    SettingsIcon
+    SettingsIcon,
+    Weather
   }
 })
 export default class App extends Vue {
@@ -37,7 +40,7 @@ export default class App extends Vue {
       if (this.index >= this.backgrounds.length) {
         this.index = 0;
       }
-    }, this.changeInterval)
+    }, this.changeInterval);
   }
 }
 </script>
@@ -52,6 +55,8 @@ export default class App extends Vue {
   font-family: 'Roboto', sans-serif;
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 body, html {

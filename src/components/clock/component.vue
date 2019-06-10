@@ -7,15 +7,15 @@
 </template>
 
 <script lang="ts">
+import { ClockSettings } from '@components/settings/types';
 import moment from 'moment';
 import { Component, Vue } from 'vue-property-decorator';
 import { State } from 'vuex-class';
-import { ClockSettings } from '@components/settings/types';
 
 @Component
 export default class Clock extends Vue {
   @State(state => state.settings.clock) settings!: ClockSettings;
-  
+
   public displayTime: string = '-';
   public displayDate: string = '-';
   public displayDOW: string = '-';
@@ -42,6 +42,7 @@ export default class Clock extends Vue {
   text-shadow: 2px 2px #000000;
   text-align: center;
   font-weight: bolder;
+  height: 250px;
   width: 30vw;
   min-width: 300px;
 }

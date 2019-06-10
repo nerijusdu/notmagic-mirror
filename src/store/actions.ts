@@ -1,6 +1,8 @@
+import { WeatherModule } from '@components/weather';
 import redditService from '@services/redditService';
 import { RootState } from '@store/types';
 import { ActionTree } from 'vuex';
+import { getModule } from '.';
 
 export const actions: ActionTree<RootState, RootState> = {
   async getWallpapers({ commit }) {
@@ -8,7 +10,8 @@ export const actions: ActionTree<RootState, RootState> = {
 
     commit('updateWallpapers', wallpapers);
   },
-  init({ dispatch }) {
-    dispatch('getWallpapers');
+  async init({ dispatch }) {
+    await dispatch('getWallpapers');
+    await getModule(WeatherModule).getWeather();
   }
 };
