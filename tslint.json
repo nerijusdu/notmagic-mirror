@@ -23,7 +23,8 @@
         "trailing-comma": false,
         "no-console": {
             "severity": "warning"
-        }
+        },
+        "member-access": false
     },
     "rulesDirectory": []
 }

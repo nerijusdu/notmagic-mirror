@@ -1,21 +1,28 @@
+import { SettingsModule as settings } from '@components/settings';
 import Vue from 'vue';
 import Vuex, { StoreOptions } from 'vuex';
-import { RootState } from './types';
-import { module as settings } from '@components/settings';
+import { getModule as getVuexModule, VuexModule } from 'vuex-module-decorators';
 import { actions } from './actions';
 import { mutations } from './mutations';
+import { RootState } from './types';
 
 Vue.use(Vuex);
 
 const store: StoreOptions<RootState> = {
+  actions,
+  mutations,
   state: {
     backgrounds: []
   },
-  actions,
-  mutations,
   modules: {
     settings
   }
 };
 
-export default new Vuex.Store<RootState>(store);
+const storeInstance = new Vuex.Store<RootState>(store);
+
+export function getModule<T extends VuexModule>(module: ConstructorOf<T>): T {
+  return getVuexModule(module, storeInstance);
+}
+
+export default storeInstance;

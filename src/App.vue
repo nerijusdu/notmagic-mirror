@@ -12,8 +12,6 @@ import { SettingsIcon } from '@components/settings';
 import { State } from 'vuex-class'; 
 import { Image } from './store/types';
 
-const changeInterval = 60000; // TODO: move to settings
-
 @Component({
   components: {
     Clock,
@@ -22,6 +20,7 @@ const changeInterval = 60000; // TODO: move to settings
 })
 export default class App extends Vue {
   @State(state => state.backgrounds) backgrounds!: Image[];
+  @State(state => state.settings.background.changeInterval) changeInterval!: number;
   private index: number = 0;
 
   get background() {
@@ -38,7 +37,7 @@ export default class App extends Vue {
       if (this.index >= this.backgrounds.length) {
         this.index = 0;
       }
-    }, changeInterval)
+    }, this.changeInterval)
   }
 }
 </script>

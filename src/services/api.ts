@@ -1,17 +1,18 @@
-import axios, { AxiosRequestConfig } from 'axios';
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 
-const handleRequest = (method: any, hasData: boolean) => async (config?: AxiosRequestConfig) => {
+const handleRequest = (method: any, hasData: boolean) => async (userConfig?: AxiosRequestConfig) => {
   try {
-    config = config || {};
+    const config = userConfig || {};
+    let response: AxiosResponse<any>;
     if (hasData) {
-      const response = await method(config.url, config.data, config);
-      return response;
+      response = await method(config.url, config.data, config);
+    } else {
+      response = await method(config.url, config);
     }
 
-    const response = await method(config.url, config);
     return response;
-  }
-  catch (e) {
+  } catch (e) {
+    // tslint:disable-next-line:no-console
     console.warn('Network request error:', e);
     return null;
   }

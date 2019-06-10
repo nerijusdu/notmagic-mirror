@@ -1,6 +1,6 @@
-import { ActionTree } from "vuex";
-import { RootState } from "@store/types";
 import redditService from '@services/redditService';
+import { RootState } from '@store/types';
+import { ActionTree } from 'vuex';
 
 export const actions: ActionTree<RootState, RootState> = {
   async getWallpapers({ commit }) {

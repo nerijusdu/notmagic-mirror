@@ -7,21 +7,21 @@ interface Secrets {
 }
 
 const decode = (json: any, secretsJson?: any): Configuration => {
-  let secretsObj: Secrets | undefined = undefined;
+  let secretsObj: Secrets | undefined;
   if (secretsJson) {
     secretsObj = {
       reddit: secretsJson.redditSecret
-    }
+    };
   }
 
   return {
     secrets: secretsObj
   };
-}
+};
 
 let config: Configuration;
 
-export const getConfig = () : Configuration => {
+export const getConfig = (): Configuration => {
   if (config) {
     return config;
   }
@@ -30,8 +30,8 @@ export const getConfig = () : Configuration => {
   let secretsJson: any | null = null;
   try {
     secretsJson = require('../config.secret.json');
-  }
-  catch (e) {
+  } catch (e) {
+    // tslint:disable-next-line:no-console
     console.warn('config.secret.json not found');
   }
 
